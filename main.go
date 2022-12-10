@@ -29,7 +29,7 @@ func main() {
 
 		_, err = fmt.Scanln(&originValue)
 
-		if err == nil {
+		if err != nil {
 			printError(errReadingInput)
 		}
 
@@ -41,14 +41,14 @@ func main() {
 
 		fmt.Print("Would you like to convert another temperature ? (y/n) ")
 
-		if strings.ToUpper(strings.TrimSpace(shouldConvertAgain)) != "Y" {
-			fmt.Println("Good bye!")
-			break
-		}
-
 		_, err = fmt.Scanln(&shouldConvertAgain)
 		if err == nil {
 			printError(errReadingInput)
+		}
+
+		if strings.ToUpper(strings.TrimSpace(shouldConvertAgain)) != "Y" {
+			fmt.Println("Good bye!")
+			break
 		}
 	}
 }
